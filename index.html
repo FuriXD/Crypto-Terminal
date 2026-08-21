@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKTX Terminal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="ticker-strip">
+  <div class="ticker-track" id="tickerTrack">
+    <span class="ticker-item">LOADING MARKET FEED…</span>
+  </div>
+</div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">MKTX</span>
+    <span class="brand-sub">TERMINAL</span>
+  </div>
+  <div class="command-bar">
+    <span class="command-prompt">&gt;</span>
+    <input type="text" id="commandInput" placeholder="TYPE ASSET NAME OR SYMBOL" autocomplete="off" />
+    <span class="command-cursor" id="commandCursor"></span>
+  </div>
+  <div class="clock" id="clock">--:--:--</div>
+</header>
+
+<main class="terminal-grid">
+  <section class="panel table-panel">
+    <div class="panel-title">
+      <span>WATCHLIST</span>
+      <span class="panel-meta" id="assetCount">— ASSETS</span>
+    </div>
+    <div class="row head">
+      <div>ASSET</div>
+      <div class="num">LAST</div>
+      <div class="num">24H%</div>
+      <div class="num">24H HIGH</div>
+      <div class="num">24H LOW</div>
+      <div class="num">MKT CAP</div>
+      <div class="num">7D</div>
+    </div>
+    <div id="tableBody">
+      <div class="status" id="statusMsg">CONNECTING TO FEED…</div>
+    </div>
+  </section>
+
+  <section class="panel detail-panel" id="detailPanel">
+    <div class="panel-title"><span>DETAIL</span></div>
+    <div class="detail-empty" id="detailEmpty">SELECT AN ASSET ROW TO VIEW DETAIL</div>
+    <div class="detail-content" id="detailContent" style="display:none;"></div>
+  </section>
+</main>
+
+<section class="panel portfolio-panel">
+  <div class="panel-title">
+    <span>PORTFOLIO (SIMULATED)</span>
+    <span class="panel-meta" id="portfolioSummary">$0.00 — 0 POSITIONS</span>
+  </div>
+  <div class="row head portfolio-head">
+    <div>ASSET</div>
+    <div class="num">QTY</div>
+    <div class="num">AVG BUY</div>
+    <div class="num">CURRENT</div>
+    <div class="num">VALUE</div>
+    <div class="num">P&amp;L</div>
+  </div>
+  <div id="portfolioBody">
+    <div class="status" id="portfolioEmpty">NO OPEN POSITIONS — BUY AN ASSET FROM ITS DETAIL PANEL</div>
+  </div>
+</section>
+
+<footer class="fkey-bar">
+  <button class="fkey" data-action="sort-cap"><span class="fkey-label">F1</span>MKT CAP</button>
+  <button class="fkey" data-action="sort-gain"><span class="fkey-label">F2</span>GAINERS</button>
+  <button class="fkey" data-action="sort-loss"><span class="fkey-label">F3</span>LOSERS</button>
+  <button class="fkey" data-action="refresh"><span class="fkey-label">F4</span>REFRESH</button>
+  <button class="fkey" data-action="focus-cmd"><span class="fkey-label">F5</span>FIND</button>
+  <button class="fkey" data-action="clear"><span class="fkey-label">F6</span>CLEAR</button>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
